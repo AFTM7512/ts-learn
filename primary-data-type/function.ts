@@ -47,3 +47,22 @@ add5(1, undefined, 1)
 function add6(x: number, ...rest: number[]): number {
   return x + rest.reduce((accu, cur) => accu + cur)
 }
+
+
+/**
+ * 函数重载： 依据不同参数类型或参数个数执行一些不同函数体的实现
+ *  1. 定义好不同类型，不同个数的入参以及返回值类型；
+ *  2. 在一个相对宽泛的（包含定义的类型）中去实现；
+ *  3. ts 编译器是从第一个定义的类型开始匹配，因此我们要把容易匹配的放在前面
+ */
+function add8(x: number, y: number): number;
+function add8(x: string, y: string): string;
+
+function add8(x: number | string, y: number | string) {
+  if (typeof x === 'number' && typeof y === 'number') {
+    return x + y
+  }
+  if (typeof x === 'string' && typeof y === 'string') {
+    return x + '&&' + y
+  }
+}
