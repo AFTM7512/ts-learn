@@ -7,7 +7,7 @@
 
 // 使用 type 来实现类型约束
 type TList = string | []
-function getLength<T extends TList> (arg: T): number {
+function getLength<T extends TList>(arg: T): number {
   return arg.length
 }
 
@@ -16,7 +16,7 @@ function getLength<T extends TList> (arg: T): number {
 interface IList {
   length: number
 }
-function getListLength<T extends IList> (arg: T): number {
+function getListLength<T extends IList>(arg: T): number {
   return arg.length
 }
 // 此时使用的类型没有 length 属性的话，则会报错。 

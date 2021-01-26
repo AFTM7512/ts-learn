@@ -23,7 +23,6 @@ let add3: Add3 = (x, y) => x + y
 type Add4 = (x: number, y: number) => number
 let add4: Add4 = (x, y) => x + y
 
-
 /**
  * 可选参数
  *  1. 可选参数后面 不可 跟必传参数；
@@ -47,6 +46,15 @@ add5(1, undefined, 1)
 function add6(x: number, ...rest: number[]): number {
   return x + rest.reduce((accu, cur) => accu + cur)
 }
+
+/**
+ * 函数参数兼容性问题：
+ *  1. 固定参数，参数数量相同；
+ *  2. 固定参数能兼容可选参数和剩余参数
+ *  3. 可选参数不兼容剩余参数和固定参数
+ *  4. 剩余参数兼容可选参数和固定参数；
+ *  5. 参数类型要相同；
+ */
 
 
 /**
