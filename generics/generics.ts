@@ -34,3 +34,40 @@ function fn1(arg: number | string): number | string {
     return arg++
   }
 }
+
+/**
+ * 在 interface 中使用 泛型
+ */
+
+// 1. 接口中的某一个类型中使用泛型
+interface Fn1 {
+  <T>(arg: T) : T,
+  add: <T>(arg: T) => T,
+}
+
+// 2. 接口全局都可以使用泛型
+interface Fn2<T> {
+  add: (arg: T) => T,
+  index: T,
+}
+
+/**
+ * 在 class 中使用泛型
+ *  1. 泛型类指的是实例部分的类型，所以类的静态属性不能使用这个泛型类型。
+ */
+class Fn3<T> {
+  constructor(name) {
+    this.name = name
+  }
+  name: T
+
+  // 静态成员不能引用类类型参数
+  // static _id: T
+
+  func(arg: T): T {
+    return arg
+  }
+}
+
+// 调用的方式
+let stringNumeric = new Fn3<string>('abc');
