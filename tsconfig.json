@@ -1,8 +1,15 @@
 {
-  "files": [],    // 需要编译的文件
+  "files": [      // 需要编译的文件, 同时， files 会与  include 合并
+    "src/a.ts"
+  ],    
   "include": [    // 需要编译的文件，或者目录
     "src",        // 表示 src 下的所有文件
     "src/*",      // 通配符，需要编译 src 下的一级目录
     "src/*/*"     // 只会编译 src 下的二级目录文件
   ], 
+  "exclude": [    // 表示需要排除的文件和文件夹，默认排除 node_modules 下的所有文件 和 所有的声明文件
+    "src/lib"
+  ],
+
+  "extends": "./tsconfig.base.json", // 继承其他配置文件，
 }
